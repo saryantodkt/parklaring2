@@ -29,7 +29,7 @@
                 <div class="col-md-3 mb-3">
                     <label for="entity" class="form-label">Entity (Company) <span class="text-danger">*</span></label>
                     <select name="entity" id="entity" class="form-select">
-                        <option value="">Select Entity</option>
+                        <option value="0">Select Entity</option>
                         @foreach($entities as $entity)
                             <option value="{{ $entity->id }}">{{ $entity->entity_name }}</option>
                         @endforeach

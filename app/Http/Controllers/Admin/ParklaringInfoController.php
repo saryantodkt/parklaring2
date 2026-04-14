@@ -351,6 +351,12 @@ class ParklaringInfoController extends Controller
     public function getApprover($id)
     {
         $entity_id = $id;
+        if($entity_id == 0){
+            return response()->json([
+                'approver_name' => '',
+                'approver_position' => '',
+            ]);
+        }
         $approver = Approver::where('entity_id', $entity_id)->first();
         return response()->json([
             'approver_name' => $approver->approver_name,
