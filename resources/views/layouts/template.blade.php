@@ -246,7 +246,7 @@
             // Generate PDF from the A4 page container
             const opt = {
                 margin:       0,
-                filename:     'Surat_Keterangan_Kerja {{ $parklaringInfo->employee_name }}.pdf',
+                filename:     'SKET-{{ $parklaringInfo->employee_name }}-{{ $parklaringInfo->nik }}.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
