@@ -192,18 +192,6 @@ class ParklaringInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $request->validate([
-            'entity' => 'required|boolean',
-            //'document_no' => 'required',
-            'employee_name' => 'required|string',
-            //'last_position' => 'required|string',
-            //'department_id' => 'required',
-            //'join_date' => 'required|date',
-            //'resignation_date' => 'required|date',
-            'date_approved' => 'required|date',
-        ]);
-
 
         $parklaring = ParklaringInfo::findOrFail($id);
         $parklaring->entity_id = $request->entity;
