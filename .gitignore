@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/QR
+/public/exit_clearance_form/
+/public/resignation_form/
 /storage/*.key
 /vendor
 .env
