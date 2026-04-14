@@ -4,6 +4,7 @@
 /public/QR
 /public/exit_clearance_form/
 /public/resignation_form/
+/public/images/
 /storage/*.key
 /vendor
 .env

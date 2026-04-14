@@ -6,7 +6,7 @@
         <h2>Settings</h2>
     </div>
     <div class="col-md-6 text-end">
-        <a href="{{ url('/admin/parklaring') }}" class="btn btn-primary">Back</a>
+        <a href="{{ url('/admin/parklaring') }}" class="btn btn-primary">Close Setting</a>
     </div>
 </div>
 <!-- Entity -->
@@ -28,6 +28,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Entity Name</th>
+                        <th>Code</th>
                         <th>Logo</th>
                         <th>Stamp</th>
                         <th>Actions</th>
@@ -38,6 +39,7 @@
                         <tr>
                             <td>{{ $entity->id }}</td>
                             <td>{{ $entity->entity_name }}</td>
+                            <td>{{ $entity->entity_code }}</td>
                             <td><img src="{{ asset('images/'.$entity->logo) }}" alt="Logo" width="50"></td>
                             <td><img src="{{ asset('images/'.$entity->stamp) }}" alt="Stamp" width="50"></td>
                             <td>
@@ -52,12 +54,16 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ url('/admin/setting/'.$entity->id) }}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('admin.setting.updateEntity') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    @method('PUT')
+                                                    <input type="hidden" name="entity_id" value="{{ $entity->id }}">
                                                     <div class="mb-3">
                                                         <label for="entity_name" class="form-label">Entity Name</label>
                                                         <input type="text" class="form-control" id="entity_name" name="entity_name" value="{{ $entity->entity_name }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="entity_code" class="form-label">Entity Code</label>
+                                                        <input type="text" class="form-control" id="entity_code" name="entity_code" value="{{ $entity->entity_code }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="logo" class="form-label">Logo</label>
@@ -88,11 +94,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <form action="{{ url('/admin/setting/'.$entity->id) }}" method="POST" class="d-inline-block form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete">Delete</button>
-                                </form> -->
                             </td>
                         </tr>
                     @empty
@@ -146,9 +147,9 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('admin.setting.updateDepartment') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    @method('PUT')
+                                                    <input type="hidden" name="department_id" value="{{ $department->id }}">
                                                     <div class="mb-3">
                                                         <label for="department_name" class="form-label">Department Name</label>
                                                         <input type="text" class="form-control" id="department_name" name="department_name" value="{{ $department->department_name }}">
@@ -159,12 +160,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                <!-- <form action="{{ url('/admin/setting/'.$department->id) }}" method="POST" class="d-inline-block form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete">Delete</button>
-                                </form> -->
                             </td>
                         </tr>
                         <!-- on click button edit, show modal  -->
@@ -226,9 +221,9 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('admin.setting.updateApprover') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    @method('PUT')
+                                                    <input type="hidden" name="approver_id" value="{{ $approver->id }}">
                                                     <div class="mb-3">
                                                         <label for="entity_id" class="form-label">Entity</label>
                                                         <!-- Form select dropdown from entities -->

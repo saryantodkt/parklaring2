@@ -34,4 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin']], functi
     Route::post('parklaring/{id}/delete_resignation_form', [\App\Http\Controllers\Admin\ParklaringInfoController::class, 'delete_resignation_form'])->name('admin.parklaring.delete_resignation_form');
     Route::get('parklaring/getApprover/{id}', [\App\Http\Controllers\Admin\ParklaringInfoController::class, 'getApprover'])->name('admin.parklaring.getApprover');
     Route::resource('setting', \App\Http\Controllers\Admin\SettingController::class);
+    Route::post('setting/updateEntity', [\App\Http\Controllers\Admin\ParklaringInfoController::class, 'updateEntity'])->name('admin.setting.updateEntity');
+    Route::post('setting/updateDepartment', [\App\Http\Controllers\Admin\ParklaringInfoController::class, 'updateDepartment'])->name('admin.setting.updateDepartment');
+    Route::post('setting/updateApprover', [\App\Http\Controllers\Admin\ParklaringInfoController::class, 'updateApprover'])->name('admin.setting.updateApprover');
 });

@@ -363,4 +363,55 @@ class ParklaringInfoController extends Controller
             'approver_position' => $approver->approver_position,
         ]);
     }
+
+    // Update Entity
+    public function updateEntity(Request $request)
+    {
+        $entity = Entities::findOrFail($request->entity_id);
+        $entity->entity_name = $request->entity_name;
+        $entity->entity_code = $request->entity_code;
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $entity->logo = $filename;
+        }
+        if ($request->hasFile('stamp')) {
+            $file = $request->file('stamp');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $entity->stamp = $filename;
+        }
+        $entity->save();
+
+        return redirect('/admin/setting')->with('success', 'Entity updated successfully.');
+    }
+
+    //Update Department
+    public function updateDepartment(Request $request)
+    {
+        $department = Department::findOrFail($request->department_id);
+        $department->department_name = $request->department_name;
+        $department->save();
+
+        return redirect('/admin/setting')->with('success', 'Department updated successfully.');
+    }   
+
+    //Update Approver
+    public function updateApprover(Request $request)
+    {
+        $approver = Approver::findOrFail($request->approver_id);
+        $approver->approver_name = $request->approver_name;
+        $approver->approver_position = $request->approver_position;
+        $approver->entity_id = $request->entity_id;
+        if ($request->hasFile('signature')) {
+            $file = $request->file('signature');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $approver->signature = $filename;
+        }
+        $approver->save();
+
+        return redirect('/admin/setting')->with('success', 'Approver updated successfully.');
+    }   
 }
