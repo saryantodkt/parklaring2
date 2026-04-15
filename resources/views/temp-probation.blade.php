@@ -91,6 +91,9 @@
                 </div>
                 <div class="col-4"></div>
                 <div class="col-4">
+                    <?php 
+                    $signPosition = getSignPosition($parklaringInfo->sign_position);
+                    ?>
                     <div id="company-stamp"
                     style="
                         position: absolute;
