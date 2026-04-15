@@ -131,7 +131,7 @@
                         transform: rotate({{ $signPosition[5] }}deg);
                     "
                     >
-                        <img src="{{ asset('images/'.$parklaringInfo->approver->signature) }}" alt="" width="auto" height="auto">
+                        <img src="{{ asset('images/'.$parklaringInfo->approver->signature) }}" alt="" width="auto" height="75px">
                     </div>
                     <p style="padding-top: 0px">Jakarta, {{ Date::parse($parklaringInfo->date_approved)->format('d F Y') }}</p>
                     <br>
@@ -139,12 +139,10 @@
                     <p style="margin-bottom: 0px; font-weight:bold">{!! $parklaringInfo->approver->approver_name !!}</p>
                     <p>{!! $parklaringInfo->approver->approver_position !!}</p>
                 </div>
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <div>
+                <div class="col-3"></div>
+                <div class="col-3">
                     <img src="{{ asset('QR/' . $parklaringInfo->unique_code . '.svg') }}" alt="QR Code">    
-                    </div>
-                    <small style="font-size:10px">{!! $parklaringInfo->unique_code !!}</small>
+                    <p style="font-size:10px">{!! $parklaringInfo->unique_code !!}</p>
                 </div>
             </div>
         </div>
